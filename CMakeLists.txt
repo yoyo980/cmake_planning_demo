@@ -6,6 +6,7 @@ project(MyProject VERSION 0.0.1
     HOMEPAGE_URL "https://github.com/yoyo980/cmake_planning_demo" 
 )
 set(CMAKE_CXX_STANDARD 17)
+enable_testing()
 
 #设置 可执行文件、动态文件、静态文件 输出路径
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
@@ -26,5 +27,7 @@ if(TARGET Eigen3::Eigen)
     message(STATUS "****** Successfully found Eigen3 3.4 ******")
 endif()
 
+set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
 #添加子目录
 add_subdirectory(src)
+add_subdirectory(test/map_test)
